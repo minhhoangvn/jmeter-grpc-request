@@ -86,18 +86,6 @@ public class ExceptionUtils {
     /**
      * Get print abnormal content
      *
-     * <p>By default, only five key lines are printed
-     *
-     * @param e exception
-     * @return exception data
-     */
-    public static synchronized String getPrintExceptionToStr(Throwable e) {
-        return getPrintExceptionToStr(e, 4);
-    }
-
-    /**
-     * Get print abnormal content
-     *
      * @param e exception
      * @param line Print the number of rows
      * @return exception data
@@ -105,50 +93,6 @@ public class ExceptionUtils {
     public static synchronized String getPrintExceptionToStr(Throwable e, Integer line) {
         StringBuffer printException = getPrintException(e, line, ExceptionConvertEnum.StringBuffer);
         return printException.toString();
-    }
-
-    /**
-     * Get print abnormal content
-     *
-     * <p>By default, only five key lines are printed
-     *
-     * @param e exception
-     * @return exception data
-     */
-    public static synchronized JSONObject getPrintExceptionToJson(Throwable e) {
-        return getPrintExceptionToJson(e, 4);
-    }
-
-    /**
-     * Get print abnormal content
-     *
-     * @param e exception
-     * @param line Print the number of rows
-     * @return exception data
-     */
-    public static synchronized JSONObject getPrintExceptionToJson(Throwable e, Integer line) {
-        return getPrintException(e, line, ExceptionConvertEnum.JSONObject);
-    }
-
-    /**
-     * Get print abnormal content
-     *
-     * <p>By default, only five key lines are printed
-     *
-     * @param e exception
-     */
-    public static synchronized void printException(Throwable e) {
-        printException(e, 4);
-    }
-
-    /**
-     * Get print abnormal content
-     *
-     * @param e exception
-     * @param line Print the number of rows
-     */
-    public static synchronized void printException(Throwable e, Integer line) {
-        System.err.print(getPrintExceptionToStr(e, line));
     }
 
     private enum ExceptionConvertEnum {
