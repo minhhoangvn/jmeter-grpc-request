@@ -22,10 +22,7 @@ public class ExceptionUtilsTest extends BaseTest {
             protocInvoker.invoke();
         } catch (Exception e) {
             String expectedMsg =
-                    "Protoc execute error: \n"
-                        + "\tMissing input file.\n"
-                        + "\n"
-                        + "\tat vn.zalopay.benchmark.core.protobuf.ProtocInvoker.protocInvokerErrorHandler(ProtocInvoker.java:295)\n"
+                    "\tat vn.zalopay.benchmark.core.protobuf.ProtocInvoker.protocInvokerErrorHandler(ProtocInvoker.java:295)\n"
                         + "\tat vn.zalopay.benchmark.core.protobuf.ProtocInvoker.invokeBinary(ProtocInvoker.java:171)\n"
                         + "\tat vn.zalopay.benchmark.core.protobuf.ProtocInvoker.invoke(ProtocInvoker.java:104)\n"
                         + "\tat vn.zalopay.benchmark.core.utils.ExceptionUtilsTest.testCanGetPrintExceptionToStrWithSpecificLineStackTrace(ExceptionUtilsTest.java:22)\n"
@@ -50,13 +47,10 @@ public class ExceptionUtilsTest extends BaseTest {
             protocInvoker.invoke();
         } catch (Exception e) {
             String expectedMsg =
-                    "Protoc execute error: \n"
-                        + "\tMissing input file.\n"
-                        + "\n"
-                        + "\tat vn.zalopay.benchmark.core.protobuf.ProtocInvoker.protocInvokerErrorHandler(ProtocInvoker.java:295)\n"
+                    "\tat vn.zalopay.benchmark.core.protobuf.ProtocInvoker.protocInvokerErrorHandler(ProtocInvoker.java:295)\n"
                         + "\tat vn.zalopay.benchmark.core.protobuf.ProtocInvoker.invokeBinary(ProtocInvoker.java:171)\n"
                         + "\tat vn.zalopay.benchmark.core.protobuf.ProtocInvoker.invoke(ProtocInvoker.java:104)\n"
-                        + "\tat vn.zalopay.benchmark.core.utils.ExceptionUtilsTest.testCanGetPrintExceptionToStrWithInputMoreThanMaxLineStackTrace(ExceptionUtilsTest.java:50)\n"
+                        + "\tat vn.zalopay.benchmark.core.utils.ExceptionUtilsTest.testCanGetPrintExceptionToStrWithInputMoreThanMaxLineStackTrace(ExceptionUtilsTest.java:47)\n"
                         + "\tat jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(NativeMethodAccessorImpl.java:-2)\n"
                         + "\tat jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\n"
                         + "\tat jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n"
