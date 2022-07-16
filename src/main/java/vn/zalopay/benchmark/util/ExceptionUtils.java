@@ -1,7 +1,5 @@
 package vn.zalopay.benchmark.util;
 
-import com.alibaba.fastjson.JSONObject;
-
 /**
  * <b>Exception print utility class</b>
  *
@@ -12,27 +10,18 @@ import com.alibaba.fastjson.JSONObject;
  * @since 2018-9-9
  */
 public class ExceptionUtils {
+    private ExceptionUtils() {
+        throw new IllegalStateException("Utility class");
+    }
 
     @SuppressWarnings("unchecked")
-    private static synchronized <T> T getPrintException(
-            Throwable e, Integer line, ExceptionConvertEnum exceptionConvertEnum) {
-        T msg = null;
-        if (exceptionConvertEnum == ExceptionConvertEnum.JSONObject) {
-            msg = (T) new JSONObject(true);
-            if (e == null) {
-                ((JSONObject) msg).put("0", "The stack trace is null");
-                return msg;
-            } else {
-                ((JSONObject) msg).put("0", e.toString());
-            }
-        } else if (exceptionConvertEnum == ExceptionConvertEnum.StringBuffer) {
-            msg = (T) new StringBuffer();
-            if (e == null) {
-                ((StringBuffer) msg).append("The stack trace is null");
-                return msg;
-            } else {
-                ((StringBuffer) msg).append(e + "\n");
-            }
+    private static synchronized <T> T getPrintException(Throwable e, Integer line) {
+        T msg = (T) new StringBuffer();
+        if (e == null) {
+            ((StringBuffer) msg).append("The stack trace is null");
+            return msg;
+        } else {
+            ((StringBuffer) msg).append(e).append("\n");
         }
 
         StackTraceElement[] stackTraceElementArray = e.getStackTrace();
@@ -49,35 +38,16 @@ public class ExceptionUtils {
             String className = stackTraceElement.getClassName();
             String methodName = stackTraceElement.getMethodName();
             int lineNumber = stackTraceElement.getLineNumber();
-
-            if (exceptionConvertEnum == ExceptionConvertEnum.JSONObject) {
-                ((JSONObject) msg)
-                        .put(
-                                i + 1 + "",
-                                "　　at "
-                                        + className
-                                        + "."
-                                        + methodName
-                                        + "("
-                                        + fileName
-                                        + ":"
-                                        + lineNumber
-                                        + ")");
-            }
-
-            if (exceptionConvertEnum == ExceptionConvertEnum.StringBuffer) {
-                ((StringBuffer) msg)
-                        .append(
-                                "\tat "
-                                        + className
-                                        + "."
-                                        + methodName
-                                        + "("
-                                        + fileName
-                                        + ":"
-                                        + lineNumber
-                                        + ")\n");
-            }
+            ((StringBuffer) msg)
+                    .append("\tat ")
+                    .append(className)
+                    .append(".")
+                    .append(methodName)
+                    .append("(")
+                    .append(fileName)
+                    .append(":")
+                    .append(lineNumber)
+                    .append(")\n");
         }
 
         return msg;
@@ -91,12 +61,7 @@ public class ExceptionUtils {
      * @return exception data
      */
     public static synchronized String getPrintExceptionToStr(Throwable e, Integer line) {
-        StringBuffer printException = getPrintException(e, line, ExceptionConvertEnum.StringBuffer);
+        StringBuffer printException = getPrintException(e, line);
         return printException.toString();
-    }
-
-    private enum ExceptionConvertEnum {
-        JSONObject,
-        StringBuffer;
     }
 }
